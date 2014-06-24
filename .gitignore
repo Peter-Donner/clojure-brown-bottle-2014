@@ -1,0 +1,11 @@
+.lein*
+.nrepl*
+.repl*
+.sass*
+target
+
+# Generated Files
+resources/public/clojure-brown-bottle.html
+resources/public/css/bootstrap
+resources/public/css/clojure-brown-bottle.css
+resources/public/js/clojure-brown-bottle.js

@@ -1,0 +1,565 @@
+!!!5
+%html
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
+    %link{:href => "css/clojure-brown-bottle.css", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "highlightjs.org/styles/default.css", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "highlightjs.org/styles/monokai_sublime.css", :rel => "stylesheet", :type => "text/css"}
+    %script{:src => "highlightjs.org/highlight.pack.js"}
+    :css
+      pre code {
+        font-size: 1.5em;
+      }
+  %body{:style => "overflow:hidden"}
+    #slide-container.hide.row
+      #main-slide-content.col-sm-10
+        %img{:src => "img/sir.png"}
+      .col-sm-2{:style => "background: #447; height:10000px; overflow:hidden"}
+        %img.center-block{:src => "img/Clojure_Programming_Language_Logo_Icon_SVG.svg", :style => "margin-top:5px"}
+        .progress{:style => "margin-top:3ex"}
+          .progress-bar.progress-bar-default{:style => "width:0%"}
+            %span.sr-only
+              time
+          .progress-bar.progress-bar-success{:style => "width:0%"}
+            %span.sr-only
+          .progress-bar.progress-bar-danger{:style => "width:0%"}
+            %span.sr-only
+              60% Complete
+
+    #blackout-container.row
+      #blackout-content.col-xs-12
+        Clojure Brown Bottle 2014
+
+    .hide.slides
+
+      .slide
+        %h1 Clojure
+        .row
+          .col-sm-12
+            %ul
+              %li Since 2007 (Version 1)
+              %li Rich Hickey, Cognitect
+              %li JVM, CLR, JavaScript, Android, iOS
+              %li lisp-1
+              %li functional
+              %li dynamic
+              %li REPL
+        .row
+          .col-sm-offset-4.col-sm-8
+            %img.img-rounded{:src => "img/lisp.jpg"}
+        %h2.hide Used by:
+        .row.hide
+          .col-sm-4
+            %img{:src => "img/OB-LC946_akamai_D_20101201120055.jpg"}
+          .col-sm-4
+            %img{:src => "img/twitter.jpg"}
+          .col-sm-4
+            %img{:src => "img/soundcloud.jpg", :style => "width: 300px"}
+        .row.hide
+          .col-sm-offset-2.col-sm-4
+            %img{:src => "img/amazonAppstore_jpg_280x280_crop_q951.jpg"}
+
+      .slide
+        %h1 Clojure on the JVM
+        .row
+          .col-sm-3
+            %img{:src => "img/JavaLogo_1.jpg"}
+          .col-sm-offset-2.col-sm-7
+            %ul
+              %li Standard
+              %li Good documentation
+              %li Compiles to bytecode
+
+      .slide
+        %h1 Java Interop
+        .row
+          .col-sm-4
+            %img{:src => "img/JavaLogo_1.jpg"}
+          .col-sm-8
+            %pre
+              %code
+                :preserve
+                  (System/getenv)
+                  ; -> {"USERPROFILE" "C:\\Users\\peterdon" ...
+
+                  (java.util.Date. 100000000000)
+                  ; -> #inst "1973-03-03T09:46:40.000-00:00"
+
+                  (def a-date (java.util.Date. 100000000000))
+                  ; -> #'user/a-date
+
+                  (.before a-date (java.util.Date.))
+                  ; -> true
+
+                  (-> a-date (.before (java.util.Date.)))
+                  ; -> true
+
+                  (. Math PI)
+                  ; -> 3.141592653589793
+
+      .slide
+        %h1 Choosing Type Forms
+        .row
+          .col-sm-12
+            %img{:src => "img/choosingtypeforms2.png", :class => "img-rounded"}
+
+      .slide
+        %h1 Clojure on the CLR
+        %img{:src => "img/microsoft-.net-framework-41.png"}
+        %ul
+          %li
+            clojure-clr
+            %a{:src => "https://github.com/clojure/clojure-clr"}
+              https://github.com/clojure/clojure-clr
+
+      .slide
+        %h1 Clojure on Android
+        %img{:src => "img/android_logo_wallpaper_black_android_logo_black__rcn_internet_broadcast___high_defenition_wallpaper.jpg"}
+        %ul
+          %li
+            lein-droid
+            %a{:src => "https://github.com/clojure-android/lein-droid"}
+              https://github.com/clojure-android/lein-droid
+
+      .slide
+        %h1 Clojure on iOS
+        .row
+          .col-sm-offset-2.col-sm-10
+            %img{:src => "img/apple-logo.jpg"}
+        %ul
+          %li 
+            lein-fruit
+            %a{:src => "https://github.com/oakes/lein-fruit"}
+              (https://github.com/oakes/lein-fruit)
+              
+      .slide
+        %h1 ClojureScript
+        %blockquote
+          %p It is better to have 100 functions operate on one data structure than to have 10 functions operate on 10 data structures.
+          %footer
+            Alan J. Perlis in
+            %cite{:title => "Alan J. Perlis"}
+              Epigrams on Programming
+        .row
+          .col-sm-6
+            %img{:src => "img/html-css-js.png"}
+          .col-sm-6
+            %ul
+              %li Module System
+              %li Proper Scope
+              %li Multimethods
+              %li Optimized
+              %li Reusable on Client and Server (cljx)
+        .row
+          .col-sm-offset-7.col-sm-5
+            %img{:src => "img/Nodejs_logo_light.png"}
+
+      .slide
+        %h1 JavaScript Interop
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (.log js/console (.-userAgent js/navigator))
+
+                  (.log js/console (.-userAgent js/window/navigator))
+        .row
+          .col-sm-12
+            %img{:src => "img/html-css-js.png"}
+
+      .slide
+        %h1 Clojure REPL
+        %blockquote
+          %p
+            != "<i>R</i>ead <i>E</i>valuate <i>P</i>rint <i>L</i>oop."
+        %ul
+          %li lein repl
+          %li counterclockwise
+          %li M-x cider-jack-in
+          %li Austin (Browser based ClojureScript REPL)
+          %li "REPL oriented programming"
+
+      .slide
+        %h1 Functions
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (def my-fun (fn [x] (* 2 x)))
+                  
+                  (defn my-fun [x] (* 2 x))
+                  
+                  (defn- my-fun [x] (* 2 x))
+                  
+                  (my-fun)
+                  ; -> ArityException...
+                  
+                  (my-fun 3)
+                  ; -> 6
+                  
+                  (#(* 2 %1) 2)
+                  ; -> 4
+                  
+                  (#(* 2 %) 2)
+                  ; -> 4
+
+      .slide
+        %h1 Macros
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (-> -1 .toString .hashCode)
+                  ; -> 1444
+
+                  (macroexpand '(-> -1 .toString .hashCode))
+                  ; -> (. (.toString -1) hashCode)
+
+                  (-> -1 (.toString) (.hashCode))
+                  ; -> 1444
+
+                  (macroexpand '(-> -1 (.toString) (.hashCode)))
+                  ; -> (. (.toString -1) hashCode)
+
+      .slide
+        %h1 Atoms
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (def x (atom 1))
+                  ; -> #'user/x
+
+                  (deref x)
+                  ; -> 1
+
+                  (prn @x) ; @x is a shortcut for (deref x)
+                  ; -> 1
+
+                  (swap! x #(+ 1 %))
+                  ; -> 2
+
+                  (swap! x inc)
+                  ; -> 3
+
+                  (reset! x 42)
+                  ; -> 42
+
+      .slide
+        %h1 defrecord
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (defrecord objectmap-entry [name locator])
+                  ; -> clojure_brown_bottle.server.objectmap-entry
+                  
+                  (def sample-entry (objectmap-entry. "/a/name" "//DIV[5]"))
+                  ; -> #'clojure-brown-bottle.server/sample-entry
+                  
+                  (:name sample-entry)
+                  ; -> "/a/name"
+                  
+                  (:locator sample-entry)
+                  ; -> "//DIV[5]"
+
+      .slide
+        %h1 Tail Recursion
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (def factorial
+                    (fn [n]
+                      (loop [cnt n acc 1]
+                        (if (zero? cnt)
+                          acc
+                          (recur (dec cnt) (* acc cnt))))))
+
+      .slide
+        %h1 Metadata
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (def ^:private x 1)
+                  ; -> #'user/x
+
+                  (def ^{:private true :foo "bar"} x 1)
+                  ; -> #'user/x
+
+      .slide
+        %h1 Numbers
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (* 5/4 3/7) ; Ratio
+                  ; -> 15/28
+
+                  (/ 2 3)
+                  ; -> 2/3
+
+                  (do 17000000000000000000000000000000)
+                  ; -> 17000000000000000000000000000000N
+
+      .slide
+        %h1 Regular Expressions
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (re-find #"(f(oo))" "bazfoobar")
+                  ; -> ["foo" "foo" "oo"]
+
+      .slide
+        %h1 Destructuring
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (let [a 1] a)
+                  ; -> 1
+
+      .slide
+        %h1 Destructuring - Sequences
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (let [[_ _ a] [1 2 3]] a)
+                  ; -> 3
+
+      .slide
+        %h1 Destructuring - Maps
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (let [{first :a} {:a 1, :b 2}] first)
+                  ; -> 1
+
+                  (let [{:keys [a]} {:a 1, :b 2}] a)
+                  ; -> 1
+
+      .slide
+        %h1 Namespaces
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (ns clojure-brown-bottle.slide-switcher
+                    (:require-macros [cljs.core.logic.macros :as m])
+                    (:use [domina :only [by-id set-html! set-text! toggle-class! value single-node html]]
+                          [domina.css :only [sel]]
+                          [clojure-brown-bottle.content :only [slide-content count-slides]]
+                          [cljs.core.logic :only [membero]]))
+
+      .slide
+        %h1 Lazyness
+        .row
+          .col-sm-12
+            %pre
+              %code
+                :preserve
+                  (take 5 (range))
+                  ; -> (0 1 2 3 4)
+                  
+                  (first [1 2 3])
+                  ; -> 1
+                  
+                  (rest [1 2 3])
+                  ; -> (2 3)
+
+      .slide
+        %h1 Persistent Data Structures
+        %blockquote
+          %p
+            It's
+            %i not
+            about storing data on disk.
+        %ul
+          %li Immutability
+          %li Software Transactional Memory
+
+      .slide
+        %h1 IPersistentList
+        .row
+          .col-sm-4
+            %ul
+              %li singly linked, grow at front
+              %li count: O(1)
+              %li conj inserts elements at the front
+          .col-sm-8
+            %pre
+              %code
+                :preserve
+                  (def my-list '(1 2 3)) ; the list is quoted
+                  ; -> #'user/my-list
+
+      .slide
+        %h1 IPersistentVector
+        .row
+          .col-sm-4
+            %ul
+              %li indexed access, grow at end
+              %li count: O(1)
+              %li lookup: O(log32 n)
+              %li conj inserts elements at the end
+          .col-sm-8
+            %pre
+              %code
+                :preserve
+                  (def my-vector [1 2 3])
+                  ; -> #'user/my-vector
+
+                  (conj my-vector "new")
+                  ; -> [1 2 3 "new"]
+
+                  (seq my-vector)
+                  ; -> (1 2 3)
+
+      .slide
+        %h1 IPersistentMap
+        .row
+          .col-sm-4
+            %ul
+              %li count: O(1)
+              %li lookup: O(log32 n) (HashMap), O(log n)
+          .col-sm-8
+            %pre
+              %code
+                :preserve
+                  {:a 1, "foo" "bar"}
+                  ; -> {"foo" "bar", :a 1}
+
+      .slide
+        %h1 IPersistentSet
+        .row
+          .col-sm-offset-4.col-sm-8
+            %pre
+              %code
+                :preserve
+                  (clojure.set/intersection \#{1 2} \#{2 3})
+                  ; -> #{2}
+
+      .slide
+        %h1 Building Clojure
+        .row
+          .col-sm-6
+            %img{:src => "img/apache-maven-project.png", :class => "img-rounded"}
+            %p
+              Apache Maven
+          .col-sm-6
+            %img{:src => "img/leiningen.jpg", :class => "img-rounded"}
+            %p
+              Leiningen
+
+      .slide
+        %h1 Leiningen - project.clj
+        .row
+          .col-sm-2
+            %img.img-rounded{:alt => "Leiningen", :src => "img/leiningen.jpg"}
+          .col-sm-10
+            %pre
+              %code
+                :preserve
+                  (defproject clojure-brown-bottle "0.1.0-SNAPSHOT"
+                    :description "Clojure Brown Bottle"
+                    :url "https://github.com/Peter-Donner/clojure-brown-bottle-2014"
+                    :plugins [[lein-cljsbuild "0.3.2"]
+                              [lein-haml-sass "0.2.7-SNAPSHOT"]
+                              [com.cemerick/austin "0.1.3"]]
+                    :cljsbuild {:builds
+                                [{:source-paths ["src/cljs"]
+                                  :compiler {:output-to "target/classes/public/clojure-brown-bottle-app.js"
+                                             :optimizations :whitespace
+                                             :pretty-print true}}]}
+                    :source-paths ["src/clj"]
+                    :dependencies [[org.clojure/clojure "1.6.0"]
+                                   [org.clojure/clojurescript "0.0-2156"]
+                                   [compojure "1.1.0"]
+                                   [ring/ring-jetty-adapter "1.1.1"]
+                                   [domina "1.0.2"]
+                                   [net.drib/strokes "0.5.1"]
+                                   [org.clojure/core.logic "0.8.7"]]
+                    :scss {:src "resources/scss"
+                           :output-directory "resources/public/css"
+                           :output-extension "css"}
+                    :haml {:src "resources/haml"
+                           :output-directory "resources/public"}
+                    :main clojure-brown-bottle.server)
+
+      .slide
+        %h1 Leiningen - ~/.lein/profiles.clj
+        .row
+          .col-sm-2
+            %img.img-rounded{:alt => "Leiningen", :src => "img/leiningen.jpg"}
+          .col-sm-10
+            %pre
+              %code
+                :preserve
+                  {:user {:java-cmd "C:\\Program Files\\Java\\jdk1.7.0_21\\bin\\java.exe"
+                          :plugins [[lein-droid "0.2.2"]
+                                    [lein-newnew "0.2.6"]
+                                    [cljs-template "0.1.5"]]
+                          :android {:sdk-path "C:/adt-bundle-windows-x86_64-20130522/sdk"}}}
+
+      .slide
+        %h1 Leiningen - Commandline Examples
+        %ul
+          %li lein help
+          %li lein repl
+          %li lein clean
+          %li lein deps
+          %li lein run
+          %li lein haml once
+          %li lein haml auto
+          %li lein cljsbuild clean
+          %li lein cljsbuild auto
+          %li lein scss clean
+          %li lein scss once
+          %li lein droid doall
+
+      .slide
+        %h1 State - You're doing it wrong
+        %ul
+          %li Mutable objects are the new spaghetti code
+          %ul
+            %li Hard to understand, test, reason about
+            %li Concurrency disaster
+            %li Terrible default architecture (Java/C#/Python/Ruby/Groovy/CLOS...)
+          %li Doing the right thing is very difficult
+          %ul
+            %li Languages matter!
+        .row
+          .col-sm-12
+            %img{:src => "img/hickey-9r6r4.jpg"}
+
+      .slide
+        %h1 State - You're doing it wrong
+        %ul
+          %li Vars - Isolate changes within threads 
+          %li Refs - Share synchronous coordinated changes between threads
+          %li Agents - Share asynchronous independent changes between threads (similar to actors, very different implementation)     
+        .row
+          .col-sm-12
+            %img{:src => "img/hickey-9r6r4.jpg"}
+
+  %script{:src => "js/d3.min.js"}
+  %script{:src => "/clojure-brown-bottle-app.js"}
+  %script{:src => "/repl.js"}
