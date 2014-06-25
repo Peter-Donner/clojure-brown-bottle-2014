@@ -1,0 +1,28 @@
+* How to Build and Run the Application
+** Step 1: Install Leinignen
+   http://leiningen.org/
+** Step 2: Compile Everything
+   Ignore errors (from Bootstrap) in the SCSS compilation.
+
+   #+BEGIN_SRC
+   $ cd clojure-brown-bottle-2014
+   $ lein scss once
+   $ lein haml once
+   $ lein cljsbuild once
+   #+END_SRC
+** Step 3: Start the Browser based REPL
+   #+BEGIN_SRC
+   $ cd clojure-brown-bottle-2014
+   $ lein repl
+   #+END_SRC
+
+   ...and on the REPL prompt...
+
+   #+BEGIN_SRC
+   $ (ns clojure-brown-bottle.server)
+   $ (cljs-repl)
+   #+END_SRC
+** Step 4: Start the Web Application
+   http://localhost:4000/clojure-brown-bottle.html
+
+   Use cursor keys to navigate and have fun!
