@@ -1,5 +1,5 @@
 * How to Build and Run the Presentation
-** Step 1: Install Leinignen
+** Step 1: Install Leiningnen
    http://leiningen.org/
 ** Step 2: Compile Everything
    Ignore errors (from Bootstrap) in the SCSS compilation.
